@@ -13,6 +13,13 @@ authors = [
     { name = "Dyn" }
 ]
 dependencies = []
+keywords = ["python", "vietnamese", "python-tieng-viet", "vpy", "vide", "education", "beginner"]
+
+[project.urls]
+Homepage = "https://github.com/cmduyeen/python-tieng-viet"
+Repository = "https://github.com/cmduyeen/python-tieng-viet"
+Issues = "https://github.com/cmduyeen/python-tieng-viet/issues"
+Funding = "https://ko-fi.com/cmduyeen"
 
 [project.scripts]
 vpy = "vpy.cli:main"
