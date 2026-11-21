@@ -1,54 +1,85 @@
-# vpy — Python tiếng Việt cho người mới học & trẻ em
+# 🐍 python-tieng-viet (`vpy` & `vide`) — Học Python bằng tiếng Việt
 
 [Tiếng Việt](README.md) · [English](README.en.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Buy%20me%20a%20coffee-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/cmduyeen)
 
-`vpy` hỗ trợ cả 2 tầng cho người Việt mới học Python:
-1. **Lệnh CLI tiếng Việt:** Chạy file (`vpy chay`), tạo môi trường ảo tự động (`vpy tao_moitruong`), cài thư viện (`vpy cai`), và **dịch lỗi Traceback Python sang tiếng Việt**.
-2. **Code Python tiếng Việt (`.vpy`):** Viết bằng từ khóa tiếng Việt (`neu`, `nguoclai`, `voi ... trong dayso(...)`, `ham`, `in(...)`) và chạy trực tiếp hoặc dịch sang `.py` chuẩn để học đối chiếu.
+Học lập trình Python dễ dàng ngay từ ngày đầu tiên mà không bị rào cản tiếng Anh. Viết code bằng từ khóa tiếng Việt (`.vpy`), chạy lệnh tiếng Việt trên terminal (`vpy`), và mở trình soạn thảo có sẵn (`vide`).
 
-## Cài đặt thử nghiệm (Local)
+## ✨ Điểm nổi bật
+
+- **Dễ hiểu từ dòng đầu tiên:** Viết logic bằng từ khóa quen thuộc (`neu`, `nguoclai`, `voi ... trong dayso(...)`, `ham`, `in(...)`) — cực kỳ hợp cho học sinh, trẻ em và người mới bắt đầu.
+- **Dịch lỗi Traceback sang tiếng Việt:** Khi code sai, `vpy` giải thích lỗi rõ ràng bằng tiếng Việt để bạn biết sai ở đâu và sửa thế nào, không còn hoảng sợ trước màn hình lỗi đỏ tiếng Anh.
+- **Tự động học sang Python chuẩn:** Dùng `vpy dich <file.vpy>` để chuyển đổi sang file `.py` chuẩn quốc tế, giúp bạn vừa làm vừa đối chiếu.
+- **Đi kèm sẵn IDE `vide` & không cần cài thư viện ngoài:** Chỉ cài 1 gói duy nhất là có cả CLI `vpy` lẫn trình soạn thảo `vide` có gợi ý code.
+
+---
+
+## ⚡ Bắt đầu trong 30 giây
+
+### 1. Cài đặt
+
 ```powershell
-cd D:\Brain2nd\06-Code\vpy
+git clone https://github.com/cmduyeen/python-tieng-viet.git
+cd python-tieng-viet
 pip install -e .
 ```
 
-## Bảng lệnh `vpy`
+### 2. Thực hành bài đầu tiên (`xin_chao.vpy`)
 
-| Lệnh `vpy` | Ý nghĩa | Lệnh gốc tương đương |
-| :--- | :--- | :--- |
-| `vpy chay <file.py\|.vpy>` | Chạy file (kèm dịch lỗi tiếng Việt) | `python <file>` |
-| `vpy dich <file.vpy>` | Chuyển `.vpy` sang `.py` chuẩn | — |
-| `vpy tao_moitruong` | Tạo `.venv` (tự động dùng khi chạy/cài) | `python -m venv .venv` |
-| `vpy cai <thư-viện>` | Cài thư viện Python | `pip install <thư-viện>` |
-| `vpy go <thư-viện>` | Gỡ thư viện Python | `pip uninstall -y <thư-viện>` |
-| `vpy thuvien` | Xem thư viện đã cài | `pip list` |
-| `vpy donggoi` | Lưu danh sách thư viện | `pip freeze > requirements.txt` |
+Tạo file `xin_chao.vpy` với nội dung:
 
-## Ví dụ một file `xin_chao.vpy`
 ```python
 ham chao(ten):
     neu ten == "An":
-        in("Chao ban An!")
+        in("Chào bạn An!")
     nguoclai:
-        in("Xin chao", ten)
+        in("Xin chào", ten)
 
 voi i trong dayso(3):
     chao("An")
 ```
-Chạy ngay bằng: `vpy chay xin_chao.vpy` (hoặc mở trình soạn thảo `vide` đi kèm).
 
-## Bộ công cụ lập trình tiếng Việt
+Chạy ngay trên terminal:
 
-| Công cụ | Mô tả | Link |
-| :--- | :--- | :--- |
-| **vpy** *(đang xem)* | Python tiếng Việt (`.vpy`) & trình soạn thảo `vide` | [cmduyeen/python-tieng-viet](https://github.com/cmduyeen/python-tieng-viet) |
-| **vgit** | Git tiếng Việt cho người mới học | [cmduyeen/git-tieng-viet](https://github.com/cmduyeen/git-tieng-viet) |
-| **vgh** | GitHub CLI (`gh`) tiếng Việt | [cmduyeen/github-tieng-viet](https://github.com/cmduyeen/github-tieng-viet) |
-| **vwt** | Windows Terminal / PowerShell tiếng Việt | [cmduyeen/terminal-tieng-viet](https://github.com/cmduyeen/terminal-tieng-viet) |
+```powershell
+vpy chay xin_chao.vpy
+```
+
+Hoặc gõ `vide` để mở trình soạn thảo trực quan:
+
+```powershell
+vide
+```
 
 ---
 
-Phát triển bởi [cmduyeen](https://github.com/cmduyeen) · ☕ [Mời mình 1 ly cà phê (Ko-fi)](https://ko-fi.com/cmduyeen)
+## 📖 Bảng lệnh `vpy`
+
+| Lệnh `vpy` | Công dụng | Lệnh Python gốc tương đương |
+| :--- | :--- | :--- |
+| `vpy chay <file.py\|.vpy>` | Chạy file (kèm dịch lỗi tiếng Việt) | `python <file>` |
+| `vpy dich <file.vpy>` | Chuyển `.vpy` sang `.py` chuẩn | — |
+| `vpy tao_moitruong` | Tạo môi trường ảo `.venv` tự động | `python -m venv .venv` |
+| `vpy cai <thư-viện>` | Cài đặt thư viện Python | `pip install <thư-viện>` |
+| `vpy go <thư-viện>` | Gỡ thư viện Python | `pip uninstall -y <thư-viện>` |
+| `vpy thuvien` | Xem danh sách thư viện đã cài | `pip list` |
+| `vpy donggoi` | Lưu danh sách thư viện ra `requirements.txt` | `pip freeze > requirements.txt` |
+| `vide` | Mở trình soạn thảo Python tiếng Việt | — |
+
+---
+
+## 🧰 Bộ công cụ lập trình tiếng Việt
+
+| Công cụ | Mô tả | Link |
+| :--- | :--- | :--- |
+| **python-tieng-viet** *(đang xem)* | Python tiếng Việt (`vpy`) & trình soạn thảo `vide` | [cmduyeen/python-tieng-viet](https://github.com/cmduyeen/python-tieng-viet) |
+| **git-tieng-viet** | Git tiếng Việt (`vgit`) cho người mới học | [cmduyeen/git-tieng-viet](https://github.com/cmduyeen/git-tieng-viet) |
+| **github-tieng-viet** | GitHub CLI tiếng Việt (`vgh`) | [cmduyeen/github-tieng-viet](https://github.com/cmduyeen/github-tieng-viet) |
+| **terminal-tieng-viet** | Windows Terminal / PowerShell tiếng Việt (`vwt`) | [cmduyeen/terminal-tieng-viet](https://github.com/cmduyeen/terminal-tieng-viet) |
+
+---
+
+[MIT License](LICENSE) · Phát triển bởi [cmduyeen](https://github.com/cmduyeen) · ☕ [Mời mình 1 ly cà phê (Ko-fi)](https://ko-fi.com/cmduyeen)
