@@ -54,6 +54,8 @@ Hoặc gõ `vide` để mở trình soạn thảo trực quan:
 vide
 ```
 
+> 💡 **Mẹo thực hành trọn bộ bằng tiếng Việt:** Dùng [`vwt` (terminal-tieng-viet)](https://github.com/cmduyeen/terminal-tieng-viet) để tạo/vào thư mục học (`taothumuc`, `vao`), rồi dùng [`vgit` (git-tieng-viet)](https://github.com/cmduyeen/git-tieng-viet) và [`vgh` (github-tieng-viet)](https://github.com/cmduyeen/github-tieng-viet) để lưu bài tập lên GitHub (`vgit luu`, `vgh taorepo`).
+
 ---
 
 ## 📖 Bảng lệnh `vpy`
