@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vpy"
+version = "0.1.0"
+description = "Python CLI & ngon ngu Python tieng Viet (.vpy) cho nguoi moi hoc va tre em"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "Dyn" }
+]
+dependencies = []
+
+[project.scripts]
+vpy = "vpy.cli:main"
+vide = "vpy.ide:main"
+
+[tool.setuptools.packages.find]
+include = ["vpy*"]
