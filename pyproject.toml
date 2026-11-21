@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "vpy"
+name = "python-tieng-viet"
 version = "0.1.0"
 description = "Python CLI & ngon ngu Python tieng Viet (.vpy) cho nguoi moi hoc va tre em"
 readme = "README.md"

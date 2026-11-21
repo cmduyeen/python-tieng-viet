@@ -11,8 +11,8 @@
 
 ## Quick Local Install
 ```powershell
-git clone https://github.com/cmduyeen/vpy.git
-cd vpy
+git clone https://github.com/cmduyeen/python-tieng-viet.git
+cd python-tieng-viet
 pip install -e .
 ```
 
@@ -46,10 +46,10 @@ Run with: `vpy chay xin_chao.vpy`
 
 | Tool | Description | Repository |
 | :--- | :--- | :--- |
-| **vpy** *(current)* | Vietnamese Python (`.vpy`) & `vide` editor | [cmduyeen/vpy](https://github.com/cmduyeen/vpy) |
-| **vgit** | Vietnamese Git CLI for beginners | [cmduyeen/vgit](https://github.com/cmduyeen/vgit) |
-| **vgh** | Vietnamese GitHub CLI (`gh`) | [cmduyeen/vgh](https://github.com/cmduyeen/vgh) |
-| **vwt** | Vietnamese Windows Terminal / PowerShell commands | [cmduyeen/vwt](https://github.com/cmduyeen/vwt) |
+| **vpy** *(current)* | Vietnamese Python (`.vpy`) & `vide` editor | [cmduyeen/python-tieng-viet](https://github.com/cmduyeen/python-tieng-viet) |
+| **vgit** | Vietnamese Git CLI for beginners | [cmduyeen/git-tieng-viet](https://github.com/cmduyeen/git-tieng-viet) |
+| **vgh** | Vietnamese GitHub CLI (`gh`) | [cmduyeen/github-tieng-viet](https://github.com/cmduyeen/github-tieng-viet) |
+| **vwt** | Vietnamese Windows Terminal / PowerShell commands | [cmduyeen/terminal-tieng-viet](https://github.com/cmduyeen/terminal-tieng-viet) |
 
 ---
 
