@@ -7,7 +7,9 @@
 
 `vpy` provides two layers for Vietnamese beginners learning Python:
 1. **Vietnamese CLI commands:** Run files (`vpy chay`), auto-create virtual environments (`vpy tao_moitruong`), install packages (`vpy cai`), and **translate Python Tracebacks into Vietnamese**.
-2. **Vietnamese Python syntax (`.vpy`) & built-in `vide` editor:** Write Python using Vietnamese keywords (`neu`, `nguoclai`, `voi ... trong dayso(...)`, `ham`, `in(...)`) and run directly or transpile to standard `.py` for side-by-side learning.
+2. **Vietnamese Python syntax (`.vpy`) & built-in `vide` editor:** Write Python using Vietnamese keywords (`neu`, `nguoclai`, `voi ... trong dayso(...)`, `ham`, `in(...)`) and run directly or transpile to **100% standard `.py`** for side-by-side learning or production use by indie makers.
+
+> 🌐 **Try online in your browser (no install required):** **[cmduyeen.github.io/python-tieng-viet](https://cmduyeen.github.io/python-tieng-viet/)**
 
 ## Quick Local Install
 ```powershell

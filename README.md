@@ -8,6 +8,13 @@
 
 Học lập trình Python dễ dàng ngay từ ngày đầu tiên mà không bị rào cản tiếng Anh. Viết code bằng từ khóa tiếng Việt (`.vpy`), chạy lệnh tiếng Việt trên terminal (`vpy`), và mở trình soạn thảo có sẵn (`vide`).
 
+> 🌐 **Dùng thử ngay trên trình duyệt (không cần cài đặt):** **[cmduyeen.github.io/python-tieng-viet](https://cmduyeen.github.io/python-tieng-viet/)**
+
+## 🎯 Dành cho ai?
+
+- **Người mới bắt đầu & Trẻ em:** Làm quen tư duy lập trình bằng tiếng Việt tự nhiên, không bị ngợp bởi từ khóa hay thông báo lỗi tiếng Anh.
+- **Người làm độc lập (Indie / Maker):** Viết nhanh ý tưởng bằng `.vpy` rồi dùng `vpy dich` (hoặc Web Studio) để **chuyển sang code Python `.py` chuẩn 100% đúng định dạng**, chạy thật ở mọi môi trường làm việc.
+
 ## ✨ Điểm nổi bật
 
 - **Dễ hiểu từ dòng đầu tiên:** Viết logic bằng từ khóa quen thuộc (`neu`, `nguoclai`, `voi ... trong dayso(...)`, `ham`, `in(...)`) — cực kỳ hợp cho học sinh, trẻ em và người mới bắt đầu.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cmduyeen.github.io/python-tieng-viet/sitemap.xml

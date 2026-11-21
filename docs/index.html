@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Tiếng Việt Studio — Viết thử .vpy &amp; Chuyển sang Python chuẩn (.py)</title>
+  <meta name="description" content="Trình viết code Python tiếng Việt trực tuyến miễn phí cho người mới học, trẻ em và người làm độc lập. Trải nghiệm cú pháp tiếng Việt (.vpy), chạy thử và xuất code Python chuẩn 100% đúng định dạng." />
+  <meta name="keywords" content="python tiếng việt, học python cho người mới, học python cho trẻ em, vpy, vide, chuyển code tiếng việt sang python, lập trình tiếng việt online" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Python Tiếng Việt Studio — Viết thử .vpy &amp; Xuất Python chuẩn (.py)" />
+  <meta property="og:description" content="Trải nghiệm lập trình Python bằng tiếng Việt ngay trên trình duyệt — tự động chuyển sang code Python chuẩn quốc tế để học đối chiếu hoặc dùng chạy thật." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cmduyeen.github.io/python-tieng-viet/" />
+  <link rel="canonical" href="https://cmduyeen.github.io/python-tieng-viet/" />
+  <link rel="icon" href="https://cmduyeen.github.io/favicon.svg?v=2" type="image/svg+xml" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Python Tiếng Việt Studio (vpy)",
+    "url": "https://cmduyeen.github.io/python-tieng-viet/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "inLanguage": ["vi", "en"],
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free browser playground for Vietnamese Python (.vpy) with real-time transpilation to standard Python (.py) for beginners, kids, and indie makers."
+  }
+  </script>
+  <script>
+    (()=>{try{const t=localStorage.getItem("dyn-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}else{const d=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",d)}}catch(_){document.documentElement.setAttribute("data-theme","light")}})();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg-void: #f7eed6;
+      --bg-surface: #fff8e7;
+      --bg-elevated: #efe0bc;
+      --border-subtle: #d6ba8a;
+      --border-strong: #8f563b;
+      --text-primary: #3e2723;
+      --text-secondary: #5d4037;
+      --text-muted: #795548;
+      --accent-emerald: #2e6f28;
+      --accent-emerald-hover: #23581e;
+      --accent-emerald-soft: rgba(46, 111, 40, 0.12);
+      --accent-gold: #92400e;
+      --accent-gold-soft: rgba(146, 64, 14, 0.12);
+      --shadow-card: 3px 3px 0 rgba(143, 86, 59, 0.22);
+      --shadow-btn: 2px 2px 0 var(--border-strong);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg-void: #1f1916;
+      --bg-surface: #2a221d;
+      --bg-elevated: #362c25;
+      --border-subtle: #5c4332;
+      --border-strong: #9c7151;
+      --text-primary: #f5ebd6;
+      --text-secondary: #d7c3a8;
+      --text-muted: #b39b7d;
+      --accent-emerald: #7ec850;
+      --accent-emerald-hover: #93d668;
+      --accent-emerald-soft: rgba(126, 200, 80, 0.16);
+      --accent-gold: #eab308;
+      --accent-gold-soft: rgba(234, 179, 8, 0.16);
+      --shadow-card: 3px 3px 0 rgba(0, 0, 0, 0.45);
+      --shadow-btn: 2px 2px 0 #120e0c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: var(--bg-void);
+      color: var(--text-primary);
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: var(--accent-emerald); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      border-bottom: 2px solid var(--border-subtle);
+      background: var(--bg-surface);
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald);
+    }
+    .brand p {
+      margin: 4px 0 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      cursor: pointer;
+      box-shadow: var(--shadow-btn);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--bg-elevated); text-decoration: none; }
+    .btn-primary {
+      background: var(--accent-emerald);
+      color: #fff;
+      border-color: var(--border-strong);
+    }
+    [data-theme="dark"] .btn-primary { color: #162210; }
+    .btn-primary:hover { background: var(--accent-emerald-hover); }
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 20px 32px;
+      flex: 1;
+    }
+    .notice-banner {
+      background: var(--accent-gold-soft);
+      border: 1.5px solid var(--border-subtle);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      margin-bottom: 14px;
+      color: var(--text-primary);
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .preset-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .preset-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+    .chip {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .chip:hover, .chip.active {
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border-color: var(--accent-emerald);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 8px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 10px 14px;
+      background: var(--bg-elevated);
+      border-bottom: 1.5px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .btn-sm {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      box-shadow: none;
+    }
+    textarea.editor, pre.output-code {
+      margin: 0;
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      min-height: 290px;
+      width: 100%;
+      border: none;
+      outline: none;
+      resize: vertical;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      tab-size: 4;
+      white-space: pre;
+      overflow: auto;
+    }
+    .console-card {
+      margin-top: 14px;
+    }
+    .console-body {
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      min-height: 88px;
+      white-space: pre-wrap;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+    }
+    .console-error { color: #c62828; }
+    [data-theme="dark"] .console-error { color: #ff8a80; }
+    .cheatsheet {
+      margin-top: 16px;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .cheatsheet h2 {
+      margin: 0 0 8px;
+      font-size: 0.96rem;
+    }
+    .kw-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .kw-item b { color: var(--accent-emerald); }
+    footer {
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      border-top: 1.5px solid var(--border-subtle);
+      background: var(--bg-surface);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>
+        <span>🐍 Python Tiếng Việt Studio</span>
+        <span class="badge-pill">.vpy ⇄ .py</span>
+      </h1>
+      <p>Viết thử code bằng từ khóa tiếng Việt ngay trên trình duyệt — tự động dịch sang Python chuẩn 100%.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn" id="themeBtn" type="button">🌓 Giao diện</button>
+      <a class="btn" href="https://github.com/cmduyeen/python-tieng-viet" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn" href="https://ko-fi.com/cmduyeen" target="_blank" rel="noopener noreferrer">☕ Ủng hộ</a>
+      <a class="btn btn-primary" href="https://github.com/cmduyeen/lap-trinh-tieng-viet" target="_blank" rel="noopener noreferrer">⬇ Cài trọn bộ</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="notice-banner">
+      <strong>Định hướng rõ ràng:</strong> Công cụ này được thiết kế cho <strong>người mới bắt đầu, trẻ em</strong> (hiểu tư duy lập trình không vướng rào cản tiếng Anh) và <strong>người làm độc lập (Indie / Maker)</strong> — mọi đoạn code <code>.vpy</code> đều chuyển trực tiếp sang <strong>code Python chuẩn (<code>.py</code>) đúng định dạng</strong> để học đối chiếu hoặc đem chạy thật ở bất kỳ đâu.
+    </div>
+
+    <div class="toolbar">
+      <div class="preset-group">
+        <span class="preset-label">Ví dụ mẫu:</span>
+        <button class="chip active" data-preset="hello" type="button">👋 Xin chào &amp; Vòng lặp</button>
+        <button class="chip" data-preset="score" type="button">📊 Tính điểm trung bình</button>
+        <button class="chip" data-preset="loop" type="button">🔢 Đếm số chẵn</button>
+        <button class="chip" data-preset="trycatch" type="button">🛡️ Bắt lỗi an toàn</button>
+      </div>
+      <div class="preset-group">
+        <button class="btn btn-sm" id="swapModeBtn" type="button">🔄 Đang dịch: .vpy → .py</button>
+        <button class="btn btn-primary btn-sm" id="runBtn" type="button">▶ Chạy thử ngay</button>
+      </div>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" id="leftTitle">📝 Code tiếng Việt (.vpy)</span>
+          <div class="card-actions">
+            <button class="btn btn-sm" id="downloadSrcBtn" type="button">⬇ Tải file nguồn</button>
+          </div>
+        </div>
+        <textarea class="editor" id="sourceEditor" spellcheck="false" aria-label="Trình soạn thảo code"></textarea>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" id="rightTitle">🐍 Python chuẩn (.py) — Đúng định dạng</span>
+          <div class="card-actions">
+            <button class="btn btn-sm" id="copyOutBtn" type="button">📋 Sao chép</button>
+            <button class="btn btn-sm" id="downloadOutBtn" type="button">⬇ Tải file .py</button>
+          </div>
+        </div>
+        <pre class="output-code" id="outputCode"></pre>
+      </div>
+    </section>
+
+    <section class="card console-card">
+      <div class="card-header">
+        <span class="card-title">💻 Kết quả chạy thử (Sandbox trên trình duyệt)</span>
+        <button class="btn btn-sm" id="clearConsoleBtn" type="button">Xóa</button>
+      </div>
+      <div class="console-body" id="consoleOut">Bấm "▶ Chạy thử ngay" để xem kết quả chạy code trực tiếp trên trình duyệt...</div>
+    </section>
+
+    <section class="cheatsheet">
+      <h2>📚 Bảng từ khóa tiếng Việt ⇄ Python chuẩn</h2>
+      <div class="kw-grid" id="kwGrid"></div>
+    </section>
+  </main>
+
+  <footer>
+    Mã nguồn mở MIT tại <a href="https://github.com/cmduyeen/python-tieng-viet" target="_blank" rel="noopener noreferrer">cmduyeen/python-tieng-viet</a> · Bộ cài trọn bộ <a href="https://github.com/cmduyeen/lap-trinh-tieng-viet" target="_blank" rel="noopener noreferrer">lap-trinh-tieng-viet</a> · <a href="https://cmduyeen.github.io/vi/tools/" target="_blank" rel="noopener noreferrer">Blog &amp; Tools</a>
+  </footer>
+
+  <script>
+    const KEYWORD_MAP = {
+      neu: "if", hoacla: "elif", nguoclai: "else",
+      voi: "for", trong: "in", trongkhi: "while",
+      dunglai: "break", tieptuc: "continue", boqua: "pass",
+      ham: "def", trave: "return", lop: "class",
+      thu: "try", batloi: "except", cuoicung: "finally",
+      dung: "import", tu: "from", la: "as",
+      va: "and", hoac: "or", khong: "not",
+      Dung: "True", Sai: "False", Rong: "None",
+      nhap: "input", dodai: "len", dayso: "range",
+      songuyen: "int", sothuc: "float", chuoi: "str",
+      danhsach: "list", tudien: "dict", taphop: "set",
+      tinhtong: "sum", lonnhat: "max", nhonhat: "min",
+      sapxep: "sorted", lamtron: "round", tuyetdoi: "abs",
+      kieu: "type", mofile: "open", luythua: "pow",
+      tatca: "all", batky: "any"
+    };
+
+    const REVERSE_MAP = Object.fromEntries(Object.entries(KEYWORD_MAP).map(([k, v]) => [v, k]));
+    REVERSE_MAP["print"] = "in";
+    REVERSE_MAP["abs"] = "tuyetdoi";
+
+    const PRESETS = {
+      hello: `ham chao(ten):
+    neu ten == "An":
+        in("Chào bạn An! Chúc học tốt nhé.")
+    nguoclai:
+        in("Xin chào", ten)
+
+voi i trong dayso(3):
+    chao("An")
+chao("Minh")`,
+      score: `diem = [8.5, 9.0, 7.5, 10]
+tong = tinhtong(diem)
+so_mon = dodai(diem)
+trung_binh = lamtron(tong / so_mon, 2)
+
+in("Số môn:", so_mon)
+in("Điểm trung bình:", trung_binh)
+neu trung_binh >= 8.0:
+    in("Xếp loại: Giỏi!")
+nguoclai:
+    in("Xếp loại: Khá!")`,
+      loop: `in("Các số chẵn từ 0 đến 10:")
+voi so trong dayso(0, 11, 2):
+    neu so == 6:
+        in("Gặp số 6 -> tạm bỏ qua")
+        tieptuc
+    in("Số:", so)`,
+      trycatch: `ham chia(a, b):
+    thu:
+        trave a / b
+    batloi:
+        in("Không thể chia cho 0!")
+        trave Rong
+
+in("10 / 2 =", chia(10, 2))
+in("10 / 0 =", chia(10, 0))`
+    };
+
+    let reverseMode = false; // false: .vpy -> .py, true: .py -> .vpy
+
+    function tokenizePythonLike(src) {
+      const tokens = [];
+      let i = 0;
+      while (i < src.length) {
+        const ch = src[i];
+        if (ch === "#") {
+          let j = i;
+          while (j < src.length && src[j] !== "\n") j++;
+          tokens.push({ type: "other", value: src.slice(i, j) });
+          i = j;
+          continue;
+        }
+        if (ch === '"' || ch === "'") {
+          const quote = src.slice(i, i + 3) === ch.repeat(3) ? ch.repeat(3) : ch;
+          let j = i + quote.length;
+          while (j < src.length) {
+            if (src[j] === "\\" && quote.length === 1) { j += 2; continue; }
+            if (src.slice(j, j + quote.length) === quote) { j += quote.length; break; }
+            j++;
+          }
+          tokens.push({ type: "other", value: src.slice(i, j) });
+          i = j;
+          continue;
+        }
+        if (/[A-Za-z_À-ỹ]/.test(ch)) {
+          let j = i + 1;
+          while (j < src.length && /[A-Za-z0-9_À-ỹ]/.test(src[j])) j++;
+          tokens.push({ type: "name", value: src.slice(i, j) });
+          i = j;
+          continue;
+        }
+        let j = i + 1;
+        while (j < src.length && !/[A-Za-z_À-ỹ"'#]/.test(src[j])) j++;
+        tokens.push({ type: "other", value: src.slice(i, j) });
+        i = j;
+      }
+      return tokens;
+    }
+
+    function nextNonSpaceToken(tokens, idx) {
+      for (let k = idx + 1; k < tokens.length; k++) {
+        if (tokens[k].type === "other" && /^[ \t]+$/.test(tokens[k].value)) continue;
+        return tokens[k];
+      }
+      return null;
+    }
+
+    function prevNonSpaceToken(tokens, idx) {
+      for (let k = idx - 1; k >= 0; k--) {
+        if (tokens[k].type === "other" && /^[ \t]+$/.test(tokens[k].value)) continue;
+        return tokens[k];
+      }
+      return null;
+    }
+
+    function transpile(src, toVpy) {
+      const tokens = tokenizePythonLike(src);
+      return tokens.map((tok, idx) => {
+        if (tok.type !== "name") return tok.value;
+        const prev = prevNonSpaceToken(tokens, idx);
+        const next = nextNonSpaceToken(tokens, idx);
+        if (prev && prev.type === "name" && (prev.value === "ham" || prev.value === "def")) return tok.value;
+        if (prev && prev.value.endsWith(".")) return tok.value;
+        if (!toVpy) {
+          if (tok.value === "in" && next && next.value.startsWith("(")) return "print";
+          return KEYWORD_MAP[tok.value] || tok.value;
+        } else {
+          return REVERSE_MAP[tok.value] || tok.value;
+        }
+      }).join("");
+    }
+
+    // Safe mini-sandbox for running basic Python/vpy code in browser
+    function runPythonSubset(pyCode) {
+      const output = [];
+      const lines = pyCode.replace(/\r\n/g, "\n").split("\n");
+      const jsLines = [
+        "const print = (...args) => __out.push(args.map(v => v === null ? 'None' : v === true ? 'True' : v === false ? 'False' : Array.isArray(v) ? JSON.stringify(v) : String(v)).join(' '));",
+        "const range = (...a) => { let s=0,e=0,st=1; if(a.length===1){e=a[0]}else if(a.length===2){s=a[0];e=a[1]}else{s=a[0];e=a[1];st=a[2]} const r=[]; if(st>0){for(let i=s;i<e;i+=st)r.push(i)}else if(st<0){for(let i=s;i>e;i+=st)r.push(i)} return r; };",
+        "const len = x => x.length;",
+        "const sum = x => x.reduce((a,b)=>a+b,0);",
+        "const max = (...x) => x.length===1 && Array.isArray(x[0]) ? Math.max(...x[0]) : Math.max(...x);",
+        "const min = (...x) => x.length===1 && Array.isArray(x[0]) ? Math.min(...x[0]) : Math.min(...x);",
+        "const round = (n, d=0) => Number(n.toFixed(d));",
+        "const abs = Math.abs;",
+        "const int = x => parseInt(x, 10);",
+        "const float = x => parseFloat(x);",
+        "const str = x => String(x);",
+        "const sorted = x => [...x].sort((a,b)=>a-b);"
+      ];
+      const indentStack = [0];
+      const declared = new Set();
+
+      function convertExpr(expr) {
+        return expr
+          .replace(/\bTrue\b/g, "true")
+          .replace(/\bFalse\b/g, "false")
+          .replace(/\bNone\b/g, "null")
+          .replace(/\band\b/g, "&&")
+          .replace(/\bor\b/g, "||")
+          .replace(/\bnot\s+/g, "!");
+      }
+
+      for (let idx = 0; idx < lines.length; idx++) {
+        const raw = lines[idx];
+        const trimmed = raw.trim();
+        if (!trimmed || trimmed.startsWith("#")) continue;
+        const indent = raw.match(/^\s*/)[0].length;
+        while (indent < indentStack[indentStack.length - 1]) {
+          indentStack.pop();
+          jsLines.push("}");
+        }
+        const pad = " ".repeat(indentStack.length * 2);
+        if (/^def\s+([A-Za-z_]\w*)\s*\(([^)]*)\)\s*:$/.test(trimmed)) {
+          const [, fn, args] = trimmed.match(/^def\s+([A-Za-z_]\w*)\s*\(([^)]*)\)\s*:$/);
+          declared.add(fn);
+          jsLines.push(`${pad}function ${fn}(${args}) {`);
+          indentStack.push(indent + 1);
+        } else if (/^if\s+(.+):$/.test(trimmed)) {
+          const cond = convertExpr(trimmed.match(/^if\s+(.+):$/)[1]);
+          jsLines.push(`${pad}if (${cond}) {`);
+          indentStack.push(indent + 1);
+        } else if (/^elif\s+(.+):$/.test(trimmed)) {
+          const cond = convertExpr(trimmed.match(/^elif\s+(.+):$/)[1]);
+          jsLines.push(`${pad}else if (${cond}) {`);
+          indentStack.push(indent + 1);
+        } else if (/^else\s*:$/.test(trimmed)) {
+          jsLines.push(`${pad}else {`);
+          indentStack.push(indent + 1);
+        } else if (/^for\s+([A-Za-z_]\w*)\s+in\s+(.+):$/.test(trimmed)) {
+          const [, v, iter] = trimmed.match(/^for\s+([A-Za-z_]\w*)\s+in\s+(.+):$/);
+          jsLines.push(`${pad}for (const ${v} of ${convertExpr(iter)}) {`);
+          indentStack.push(indent + 1);
+        } else if (/^while\s+(.+):$/.test(trimmed)) {
+          const cond = convertExpr(trimmed.match(/^while\s+(.+):$/)[1]);
+          jsLines.push(`${pad}let __guard${idx}=0; while (${cond}) { if (++__guard${idx} > 5000) throw new Error("Vòng lặp chạy quá 5000 lần!");`);
+          indentStack.push(indent + 1);
+        } else if (/^try\s*:$/.test(trimmed)) {
+          jsLines.push(`${pad}try {`);
+          indentStack.push(indent + 1);
+        } else if (/^except(?:\s+.*)?\s*:$/.test(trimmed)) {
+          jsLines.push(`${pad}catch (__err) {`);
+          indentStack.push(indent + 1);
+        } else if (/^finally\s*:$/.test(trimmed)) {
+          jsLines.push(`${pad}finally {`);
+          indentStack.push(indent + 1);
+        } else if (trimmed === "pass") {
+          jsLines.push(`${pad};`);
+        } else if (/^return\b(.*)$/.test(trimmed)) {
+          const rest = convertExpr(trimmed.slice(6).trim());
+          jsLines.push(`${pad}return ${rest};`);
+        } else if (/^([A-Za-z_]\w*)\s*=\s*(.+)$/.test(trimmed) && !/==/.test(trimmed.split("=")[0])) {
+          const [, v, val] = trimmed.match(/^([A-Za-z_]\w*)\s*=\s*(.+)$/);
+          const kw = declared.has(v) ? "" : "let ";
+          declared.add(v);
+          jsLines.push(`${pad}${kw}${v} = ${convertExpr(val)};`);
+        } else {
+          jsLines.push(`${pad}${convertExpr(trimmed)};`);
+        }
+      }
+      while (indentStack.length > 1) {
+        indentStack.pop();
+        jsLines.push("}");
+      }
+      const fn = new Function("__out", jsLines.join("\n"));
+      fn(output);
+      return output;
+    }
+
+    const $ = id => document.getElementById(id);
+    const editor = $("sourceEditor");
+    const outputCode = $("outputCode");
+    const consoleOut = $("consoleOut");
+
+    function updateTranspile() {
+      outputCode.textContent = transpile(editor.value, reverseMode);
+    }
+
+    function setPreset(name) {
+      document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.preset === name));
+      const vpy = PRESETS[name];
+      editor.value = reverseMode ? transpile(vpy, false) : vpy;
+      updateTranspile();
+    }
+
+    $("swapModeBtn").addEventListener("click", () => {
+      const currentOut = outputCode.textContent;
+      reverseMode = !reverseMode;
+      editor.value = currentOut;
+      $("swapModeBtn").textContent = reverseMode ? "🔄 Đang dịch: .py → .vpy" : "🔄 Đang dịch: .vpy → .py";
+      $("leftTitle").textContent = reverseMode ? "🐍 Python chuẩn (.py)" : "📝 Code tiếng Việt (.vpy)";
+      $("rightTitle").textContent = reverseMode ? "📝 Code tiếng Việt (.vpy)" : "🐍 Python chuẩn (.py) — Đúng định dạng";
+      $("downloadOutBtn").textContent = reverseMode ? "⬇ Tải file .vpy" : "⬇ Tải file .py";
+      updateTranspile();
+    });
+
+    $("runBtn").addEventListener("click", () => {
+      const py = reverseMode ? editor.value : outputCode.textContent;
+      consoleOut.className = "console-body";
+      try {
+        const lines = runPythonSubset(py);
+        consoleOut.textContent = lines.length ? lines.join("\n") : "(Chạy thành công, không có dữ liệu in ra)";
+      } catch (err) {
+        consoleOut.classList.add("console-error");
+        consoleOut.textContent = "⚠️ Lỗi chạy thử trên trình duyệt: " + err.message + "\n(Với tính năng Python nâng cao như import/đọc file, hãy cài bộ CLI vpy trên máy để chạy đầy đủ.)";
+      }
+    });
+
+    $("clearConsoleBtn").addEventListener("click", () => {
+      consoleOut.className = "console-body";
+      consoleOut.textContent = "";
+    });
+
+    $("copyOutBtn").addEventListener("click", async () => {
+      await navigator.clipboard.writeText(outputCode.textContent);
+      const old = $("copyOutBtn").textContent;
+      $("copyOutBtn").textContent = "✅ Đã chép!";
+      setTimeout(() => { $("copyOutBtn").textContent = old; }, 1500);
+    });
+
+    function downloadText(filename, text) {
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = filename; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    $("downloadSrcBtn").addEventListener("click", () => downloadText(reverseMode ? "chuong_trinh.py" : "chuong_trinh.vpy", editor.value));
+    $("downloadOutBtn").addEventListener("click", () => downloadText(reverseMode ? "chuong_trinh.vpy" : "chuong_trinh.py", outputCode.textContent));
+
+    $("themeBtn").addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("dyn-theme", next); } catch (_) {}
+    });
+
+    document.querySelectorAll(".chip").forEach(btn => {
+      btn.addEventListener("click", () => setPreset(btn.dataset.preset));
+    });
+
+    editor.addEventListener("input", updateTranspile);
+    editor.addEventListener("keydown", e => {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const s = editor.selectionStart, end = editor.selectionEnd;
+        editor.value = editor.value.slice(0, s) + "    " + editor.value.slice(end);
+        editor.selectionStart = editor.selectionEnd = s + 4;
+        updateTranspile();
+      }
+    });
+
+    // Populate keyword cheatsheet
+    const kwGrid = $("kwGrid");
+    [["in(...)", "print(...)"], ...Object.entries(KEYWORD_MAP)].forEach(([vi, en]) => {
+      const div = document.createElement("div");
+      div.className = "kw-item";
+      div.innerHTML = `<b>${vi}</b> → ${en}`;
+      kwGrid.appendChild(div);
+    });
+
+    setPreset("hello");
+  </script>
+</body>
+</html>
